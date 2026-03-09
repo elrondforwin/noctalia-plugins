@@ -945,7 +945,7 @@
     {
       "id": "video-wallpaper",
       "name": "Video Wallpaper",
-      "version": "2.0.3",
+      "version": "2.0.4",
       "official": false,
       "author": "Spyridon Siarapis",
       "description": "A plugin that uses a backend renderer to play videos as your wallpaper.",
@@ -958,7 +958,7 @@
         "Fun",
         "System"
       ],
-      "lastUpdated": "2026-03-01T14:22:48+01:00"
+      "lastUpdated": "2026-03-07T21:33:03+01:00"
     },
     {
       "id": "vscode-provider",
