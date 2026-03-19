@@ -699,6 +699,24 @@
       "lastUpdated": "2026-03-05T13:10:48+10:00"
     },
     {
+      "id": "obs-control",
+      "name": "OBS Control",
+      "version": "0.1.0",
+      "official": false,
+      "author": "ayagmar",
+      "description": "OBS recording, replay, and stream status widget for Noctalia.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "3.6.0",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Panel",
+        "Indicator",
+        "Utility"
+      ],
+      "lastUpdated": "2026-03-18T19:24:12Z"
+    },
+    {
       "id": "openhue",
       "name": "Openhue widget",
       "version": "1.0.1",
