@@ -199,7 +199,7 @@
       "name": "Custom Stickers",
       "version": "1.0.0",
       "official": false,
-      "author": "Spyridon Siarapis",
+      "author": "spiros132",
       "description": "Custom stickers (images) that you can put on the desktop as desktop widgets.",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
       "minNoctaliaVersion": "4.6.6",
@@ -208,7 +208,7 @@
         "Desktop",
         "Fun"
       ],
-      "lastUpdated": "2026-03-10T23:16:33+01:00"
+      "lastUpdated": "2026-03-19T20:22:45+01:00"
     },
     {
       "id": "deskvis",
@@ -533,7 +533,7 @@
       "name": "Mpvpaper",
       "version": "1.6.2",
       "official": false,
-      "author": "Spyridon Siarapis",
+      "author": "spiros132",
       "description": "A plugin that allows having video wallpapers using mpvpaper.",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
       "minNoctaliaVersion": "3.6.0",
@@ -544,7 +544,7 @@
         "Fun",
         "System"
       ],
-      "lastUpdated": "2026-02-09T20:15:29+01:00"
+      "lastUpdated": "2026-03-19T20:22:45+01:00"
     },
     {
       "id": "netbird",
@@ -1109,7 +1109,7 @@
       "name": "Video Wallpaper",
       "version": "2.0.4",
       "official": false,
-      "author": "Spyridon Siarapis",
+      "author": "spiros132",
       "description": "A plugin that uses a backend renderer to play videos as your wallpaper.",
       "repository": "https://github.com/noctalia-dev/noctalia-plugins",
       "minNoctaliaVersion": "3.6.0",
@@ -1120,7 +1120,7 @@
         "Fun",
         "System"
       ],
-      "lastUpdated": "2026-03-07T21:33:03+01:00"
+      "lastUpdated": "2026-03-19T20:22:45+01:00"
     },
     {
       "id": "vscode-provider",
