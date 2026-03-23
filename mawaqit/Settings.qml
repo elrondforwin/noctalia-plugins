@@ -36,6 +36,7 @@ ColumnLayout {
     return !match || match.key === "99"
   }
   property string valueMethodCustomInput: valueMethodCustom     ? String(root.valueMethod)         : ""
+  property string valueTune:              cfg.tune              ?? defaults.tune              ?? ""
   property int    valueSchool:            cfg.school            ?? defaults.school            ?? 0
   property bool   valueShowCountdown:     cfg.showCountdown     ?? defaults.showCountdown     ?? true
   property bool   valueShowNotifications: cfg.showNotifications ?? defaults.showNotifications ?? true
@@ -131,6 +132,15 @@ ColumnLayout {
       { "key": "1",  "name": "+1 day" }
     ]
     onSelected: key => root.valueHijriDayOffset = parseInt(key)
+  }
+
+  NTextInput {
+      Layout.fillWidth: true
+      label: pluginApi?.tr("settings.tune.label")
+      description: pluginApi?.tr("settings.tune.desc")
+      placeholderText: "0,0,0,0,0,0,0,0,0"
+      text: root.valueTune
+      onTextChanged: root.valueTune = text
   }
 
   NDivider { Layout.fillWidth: true }
@@ -284,6 +294,7 @@ ColumnLayout {
     pluginApi.pluginSettings.school            = root.valueSchool
     pluginApi.pluginSettings.hijriDayOffset    = root.valueHijriDayOffset
     pluginApi.pluginSettings.weekStartDay      = root.valueWeekStartDay
+    pluginApi.pluginSettings.tune              = root.valueTune.trim()
     pluginApi.saveSettings()
     Logger.d("Mawaqit", "Settings saved")
   }
