@@ -311,6 +311,7 @@ Item {
     onExited: function(exitCode, exitStatus) {
       var stderr = String(taildropReceiveProcess.stderr.text || "").trim()
       var stdout = String(taildropReceiveProcess.stdout.text || "").trim()
+      var allOutput = (stderr + "\n" + stdout).trim()
       if (exitCode === 0) {
         root.taildropState = "idle"
         root.taildropMessage = ""
@@ -320,13 +321,18 @@ Item {
         Logger.i("Tailscale", "Taildrop receive completed, running post-scan")
       } else {
         root.taildropState = "error"
-        root.taildropMessage = stderr || stdout || pluginApi?.tr("taildrop.error.unknown")
+        var isDuplicateFile = allOutput.indexOf("file exists") !== -1
+          || allOutput.indexOf("refusing to overwrite") !== -1
+          || /moved 0\/\d+ files/.test(allOutput)
+        root.taildropMessage = isDuplicateFile
+          ? pluginApi?.tr("taildrop.error.file-exists")
+          : allOutput || pluginApi?.tr("taildrop.error.unknown")
         ToastService.showError(
           pluginApi?.tr("toast.title"),
           root.taildropMessage,
           "file-x"
         )
-        Logger.e("Tailscale", "Taildrop receive failed (exit " + exitCode + "): " + root.taildropMessage)
+        Logger.e("Tailscale", "Taildrop receive failed (exit " + exitCode + "): " + allOutput)
       }
     }
   }

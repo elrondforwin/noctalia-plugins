@@ -114,7 +114,8 @@
       "sent": "Files sent successfully"
     },
     "error": {
-      "unknown": "An unexpected error occurred"
+      "unknown": "An unexpected error occurred",
+      "file-exists": "File already exists in the download directory"
     }
   }
 }
