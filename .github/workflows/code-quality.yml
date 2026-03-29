@@ -74,12 +74,12 @@ jobs:
               line_index=$(echo "$line" | grep -oE "\+[0-9]+" | grep -oE "[0-9]+")
               echo "Current line index reset: $line_index"
             else
-              if echo "$line" | grep -E "(border(\.width)*|spacing|pointSize|radius|margin(s)*): [0-9]+" >/dev/null; then
+              if echo "$line" | grep -E "(border(\.width)?|spacing|pointSize|radius|margin(s)?): [0-9]+" >/dev/null; then
                 check_file_title
                 comment_body+=$(print_line "$h_priority" "$line_index" 'Do not use hardcoded values, always prefer to use the `Style` singleton instead' "$line")
                 issues=$((issues + 1))
               fi
-              if echo "$line" | grep -E "console.log" >/dev/null; then
+              if echo "$line" | grep -E "console\.log" >/dev/null; then
                 check_file_title
                 comment_body+=$(print_line "$h_priority" "$line_index" 'Do not use `console.log`, always prefer to use the `Logger` singleton instead' "$line")
                 issues=$((issues + 1))
@@ -108,4 +108,3 @@ jobs:
           if [[ "$issues" -ne 0 ]]; then
             gh pr comment "$PR_NUMBER" --body "$comment_body"
           fi
-
