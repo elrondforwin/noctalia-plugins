@@ -357,7 +357,8 @@ Rectangle {
                 opacity: 1.0
                 visible: note.isPrivate && !textArea.activeFocus
                 anchors.fill: parent
-                color: root.color
+                color: "transparent"
+                
 
                 NIcon {
                     anchors.centerIn: parent
