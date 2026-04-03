@@ -18,7 +18,6 @@ Item {
   property string lastError: ""
   property string lastErrorDetails: ""
   property string statusMessage: ""
-  property string autoDetectedWallpapersFolder: ""
 
   property var pendingCommand: []
 
@@ -591,6 +590,12 @@ Item {
       return;
     }
 
+    if (!hasAnyConfiguredWallpaper()) {
+      Logger.i("LWEController", "Skip restart: no configured wallpaper; stopping engine");
+      stopAll();
+      return;
+    }
+
     const command = buildCommand();
     if (!command || command.length <= 1) {
       Logger.w("LWEController", "Restart resolved to empty command; stopping engine");
@@ -632,7 +637,6 @@ Item {
 
     onExited: function () {
       const detected = String(stdout.text || "").trim();
-      root.autoDetectedWallpapersFolder = detected;
 
       if (detected.length > 0) {
         Logger.i("LWEController", "Detected workshop folder", detected);

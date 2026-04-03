@@ -21,7 +21,7 @@
       "crashed": "引擎异常退出"
     },
     "error": {
-      "notInstalled": "在 PATH 中未找到 linux-wallpaperengine。",
+      "notInstalled": "在 PATH 中未找到 linux-wallpaperengine，请先检查是否正确安装。",
       "assetsMissing": "未找到 Wallpaper Engine 资源，请在设置中配置资源目录。",
       "noBackground": "未配置任何壁纸路径。",
       "opengl": "OpenGL 初始化失败，请检查驱动与合成器兼容性。",
@@ -49,8 +49,8 @@
     "sortButton": "排序",
     "applyAllDisplays": "应用到全部显示器",
     "perDisplayMode": "多显示器",
-    "switchToAllDisplays": "切换到应用全部显示器",
-    "switchToPerDisplay": "切换到多显示器模式",
+    "switchToAllDisplays": "应用在全部显示器上",
+    "switchToPerDisplay": "多显示器分别应用",
     "closePanel": "关闭面板",
     "confirmApply": "确认应用",
     "cancelSelection": "取消",
@@ -121,7 +121,7 @@
     },
     "defaultFps": {
       "label": "默认 FPS",
-      "description": "新屏幕配置使用的帧率上限",
+      "description": "壁纸默认使用的帧率上限",
       "placeholder": "30"
     },
     "defaultNoFullscreenPause": {
@@ -130,17 +130,17 @@
     },
     "defaultFullscreenPauseOnlyActive": {
       "label": "仅激活全屏时暂停",
-      "description": "仅限 Wayland：仅在全屏窗口激活时暂停"
+      "description": "（仅限 Wayland）仅在全屏窗口激活时暂停"
     },
     "defaultVolume": {
-      "label": "默认音量"
+      "label": "默认壁纸音量"
     },
     "defaultMuted": {
-      "label": "默认静音",
+      "label": "默认静音壁纸",
       "description": "默认以静音模式启动壁纸"
     },
     "defaultAudioReactiveEffects": {
-      "label": "音频响应"
+      "label": "音频响应效果"
     },
     "defaultDisableMouse": {
       "label": "禁用鼠标交互"
@@ -150,7 +150,7 @@
     },
     "autoDetectWorkshop": {
       "label": "自动探测 Steam 壁纸目录",
-      "description": "当未手动设置源目录时，自动从 Steam 路径推断 workshop/content/431960"
+      "description": "当未手动设置源目录时，自动推断 Steam 安装路径和创意工坊目录"
     },
     "autoApplyOnStartup": {
       "label": "启动时自动应用",

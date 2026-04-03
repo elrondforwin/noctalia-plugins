@@ -155,10 +155,10 @@ ColumnLayout {
     label: pluginApi?.tr("settings.defaultScaling.label")
     description: pluginApi?.tr("settings.defaultScaling.description")
     model: [
-      { "key": "fill", "name": "fill" },
-      { "key": "fit", "name": "fit" },
-      { "key": "stretch", "name": "stretch" },
-      { "key": "default", "name": "default" }
+      { "key": "fill", "name": pluginApi?.tr("panel.scalingFill") },
+      { "key": "fit", "name": pluginApi?.tr("panel.scalingFit") },
+      { "key": "stretch", "name": pluginApi?.tr("panel.scalingStretch") },
+      { "key": "default", "name": pluginApi?.tr("panel.scalingDefault") }
     ]
     currentKey: root.editDefaultScaling
     onSelected: key => root.editDefaultScaling = key

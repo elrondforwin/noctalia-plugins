@@ -21,7 +21,7 @@
       "crashed": "引擎異常退出"
     },
     "error": {
-      "notInstalled": "在 PATH 中找不到 linux-wallpaperengine。",
+      "notInstalled": "在 PATH 中找不到 linux-wallpaperengine，請先確認是否正確安裝。",
       "assetsMissing": "找不到 Wallpaper Engine 資源，請在設定中設定資源目錄。",
       "noBackground": "未設定任何壁紙路徑。",
       "opengl": "OpenGL 初始化失敗，請檢查驅動與合成器相容性。",
@@ -29,7 +29,7 @@
     }
   },
   "panel": {
-    "title": "Linux-WallpaperEngine 控制器",
+    "title": "Linux-WallpaperEngine 設定",
     "installHint": "安裝範例：yay -S linux-wallpaperengine-git",
     "errorBannerTitle": "偵測到執行期錯誤",
     "errorShowDetails": "查看詳情",
@@ -49,8 +49,8 @@
     "sortButton": "排序",
     "applyAllDisplays": "套用到全部顯示器",
     "perDisplayMode": "多顯示器",
-    "switchToAllDisplays": "切換為套用全部顯示器",
-    "switchToPerDisplay": "切換為多顯示器模式",
+    "switchToAllDisplays": "套用在全部顯示器上",
+    "switchToPerDisplay": "多顯示器分別套用",
     "closePanel": "關閉面板",
     "confirmApply": "確認套用",
     "cancelSelection": "取消",
@@ -112,7 +112,7 @@
     },
     "assetsDir": {
       "label": "Wallpaper Engine 資源目錄",
-      "description": "可選: linux-wallpaperengine 使用的 assets 路徑",
+      "description": "可選：linux-wallpaperengine 使用的 assets 路徑",
       "placeholder": "~/.local/share/wallpaperengine/assets"
     },
     "defaultScaling": {
@@ -121,7 +121,7 @@
     },
     "defaultFps": {
       "label": "預設 FPS",
-      "description": "新螢幕設定使用的幀率上限",
+      "description": "壁紙預設使用的幀率上限",
       "placeholder": "30"
     },
     "defaultNoFullscreenPause": {
@@ -130,17 +130,17 @@
     },
     "defaultFullscreenPauseOnlyActive": {
       "label": "僅啟用全螢幕時暫停",
-      "description": "僅限 Wayland：僅在全螢幕視窗為作用中時暫停"
+      "description": "（僅限 Wayland）僅在全螢幕視窗為作用中時暫停"
     },
     "defaultVolume": {
-      "label": "預設音量"
+      "label": "預設壁紙音量"
     },
     "defaultMuted": {
-      "label": "預設靜音",
+      "label": "預設靜音壁紙",
       "description": "預設以靜音模式啟動壁紙"
     },
     "defaultAudioReactiveEffects": {
-      "label": "音訊響應"
+      "label": "音訊響應效果"
     },
     "defaultDisableMouse": {
       "label": "停用滑鼠互動"
@@ -150,7 +150,7 @@
     },
     "autoDetectWorkshop": {
       "label": "自動偵測 Steam 壁紙目錄",
-      "description": "當未手動設定來源目錄時，自動從 Steam 路徑推斷 workshop/content/431960"
+      "description": "當未手動設定來源目錄時，自動推斷 Steam 安裝路徑與創意工坊目錄"
     },
     "autoApplyOnStartup": {
       "label": "啟動時自動套用",

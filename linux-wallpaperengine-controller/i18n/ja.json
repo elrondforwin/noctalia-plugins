@@ -21,23 +21,23 @@
       "crashed": "エンジンが異常終了しました"
     },
     "error": {
-      "notInstalled": "PATH に linux-wallpaperengine が見つかりませんでした。",
+      "notInstalled": "PATH に linux-wallpaperengine が見つかりません。正しくインストールされているか確認してください。",
       "assetsMissing": "Wallpaper Engine の assets が見つかりません。設定で assets ディレクトリを指定してください。",
       "noBackground": "壁紙パスが設定されていません。",
       "opengl": "OpenGL の初期化に失敗しました。ドライバーとコンポジタの互換性を確認してください。",
-      "autoRecovered": "直前の正常レイアウトへ自動復旧しました"
+      "autoRecovered": "前回利用可能だったレイアウトに自動復旧しました"
     }
   },
   "panel": {
-    "title": "Linux-WallpaperEngine Controller",
+    "title": "Linux-WallpaperEngine 設定",
     "installHint": "インストール例: yay -S linux-wallpaperengine-git",
     "errorBannerTitle": "ランタイムエラーを検出",
-    "errorShowDetails": "詳細",
-    "errorHideDetails": "閉じる",
-    "errorDismiss": "通知を閉じる",
+    "errorShowDetails": "詳細を表示",
+    "errorHideDetails": "詳細を隠す",
+    "errorDismiss": "閉じる",
     "screen": {
       "label": "対象スクリーン",
-      "description": "選択した壁紙を適用するモニターを選択"
+      "description": "現在の壁紙を適用するモニターを選択"
     },
     "reload": "再読み込み",
     "stop": "停止",
@@ -49,12 +49,12 @@
     "sortButton": "並び替え",
     "applyAllDisplays": "すべてのディスプレイに適用",
     "perDisplayMode": "マルチディスプレイ",
-    "switchToAllDisplays": "すべてのディスプレイ適用に切替",
-    "switchToPerDisplay": "ディスプレイ別モードに切替",
+    "switchToAllDisplays": "すべてのディスプレイに適用",
+    "switchToPerDisplay": "ディスプレイごとに適用",
     "closePanel": "パネルを閉じる",
-    "confirmApply": "適用",
+    "confirmApply": "適用を確認",
     "cancelSelection": "キャンセル",
-    "pendingHint": "選択済みですが未適用です。設定を調整してから確定してください。",
+    "pendingHint": "選択済みですが未適用です。設定を調整してから確定できます。",
     "wallpaperScaling": "拡大縮小",
     "wallpaperVolume": "音量",
     "wallpaperMuted": "ミュート",
@@ -83,7 +83,7 @@
     "filterStatic": "静的",
     "filterDynamic": "動的",
     "sortName": "名前",
-    "sortDateAdded": "追加日時",
+    "sortDateAdded": "追加時間",
     "sortSize": "サイズ",
     "sortRecent": "最近",
     "sortAscendingToggle": "昇順/降順を切替",
@@ -106,41 +106,41 @@
       "displayTitle": "表示"
     },
     "wallpapersFolder": {
-      "label": "壁紙ソースフォルダー",
+      "label": "壁紙ソースディレクトリ",
       "description": "壁紙プロジェクトフォルダーを含むディレクトリ",
       "placeholder": "~/.local/share/Steam/steamapps/workshop/content/431960"
     },
     "assetsDir": {
-      "label": "Wallpaper Engine assets ディレクトリ",
-      "description": "任意: linux-wallpaperengine が使用する assets のパス",
+      "label": "Wallpaper Engine 資産ディレクトリ",
+      "description": "任意: linux-wallpaperengine が使用する assets パス",
       "placeholder": "~/.local/share/wallpaperengine/assets"
     },
     "defaultScaling": {
       "label": "既定の拡大縮小",
-      "description": "カスタム値がないスクリーンに使用する既定の拡大縮小モード"
+      "description": "カスタム値が未設定のときに使う既定モード"
     },
     "defaultFps": {
       "label": "既定 FPS",
-      "description": "新規スクリーン設定で使用するフレームレート上限",
+      "description": "壁紙で使う既定のフレームレート上限",
       "placeholder": "30"
     },
     "defaultNoFullscreenPause": {
-      "label": "フルスクリーン時に一時停止しない",
-      "description": "フルスクリーンアプリ実行中の一時停止を防止"
+      "label": "フルスクリーン時の一時停止を防止",
+      "description": "フルスクリーンアプリ実行中に一時停止しない"
     },
     "defaultFullscreenPauseOnlyActive": {
-      "label": "アクティブなフルスクリーンのみ一時停止",
-      "description": "Wayland のみ: フルスクリーンウィンドウがアクティブな場合のみ一時停止"
+      "label": "アクティブなフルスクリーン時のみ一時停止",
+      "description": "（Wayland のみ）フルスクリーンウィンドウがアクティブなときのみ一時停止"
     },
     "defaultVolume": {
-      "label": "既定の音量"
+      "label": "壁紙の既定音量"
     },
     "defaultMuted": {
-      "label": "既定でミュート",
-      "description": "既定で壁紙の音声をミュートして起動"
+      "label": "壁紙を既定でミュート",
+      "description": "壁紙を既定でミュート起動"
     },
     "defaultAudioReactiveEffects": {
-      "label": "オーディオ反応"
+      "label": "オーディオ反応効果"
     },
     "defaultDisableMouse": {
       "label": "マウス操作を無効化"
@@ -150,11 +150,11 @@
     },
     "autoDetectWorkshop": {
       "label": "Steam 壁紙ディレクトリを自動検出",
-      "description": "ソースフォルダーが空の場合、Steam パスから workshop/content/431960 を推定"
+      "description": "ソースディレクトリを手動設定していない場合、Steam のインストール先とワークショップディレクトリを自動推定"
     },
     "autoApplyOnStartup": {
       "label": "起動時に自動適用",
-      "description": "少なくとも 1 つのスクリーンに壁紙が設定されている場合、自動でエンジンを開始"
+      "description": "少なくとも 1 つのスクリーンに壁紙が設定されている場合、起動時にエンジンを自動実行"
     }
   }
 }
