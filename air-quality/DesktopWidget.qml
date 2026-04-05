@@ -38,7 +38,7 @@ DraggableDesktopWidget {
     // Level label
     NText {
       Layout.alignment: Qt.AlignHCenter
-      text: root.hasData ? (pluginApi?.tr(root.mainInstance.getAqiLevel(root.aqi)) ?? "") : pluginApi?.tr("desktop.noData")
+      text: root.hasData ? pluginApi?.tr(root.mainInstance.getAqiLevel(root.aqi)) : pluginApi?.tr("desktop.noData")
       pointSize: Style.fontSizeM
       color: root.aqiColor
     }

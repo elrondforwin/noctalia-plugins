@@ -27,7 +27,7 @@ ColumnLayout {
 
     ColumnLayout {
       Layout.fillWidth: true
-      spacing: 2
+      spacing: Style.marginXS
 
       NText {
         text: pluginApi?.tr("settings.aqiScale")

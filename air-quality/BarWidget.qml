@@ -129,7 +129,7 @@ Item {
       }
       var m = root.mainInstance
       var aqi = m.getAqi()
-      var level = pluginApi?.tr(m.getAqiLevel(aqi)) ?? ""
+      var level = pluginApi?.tr(m.getAqiLevel(aqi))
       var city = m.getLocationName()
       var scaleLabel = pluginApi?.tr(m.aqiScale === "eu" ? "scale.eu" : "scale.us")
       var tip = scaleLabel + ": " + aqi + " — " + level

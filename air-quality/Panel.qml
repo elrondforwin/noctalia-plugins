@@ -35,12 +35,10 @@ Item {
         top: parent.top
         margins: Style.marginXL
       }
-      spacing: 0
 
       // ======== Data content (hidden when no data) ========
       ColumnLayout {
         Layout.fillWidth: true
-        spacing: 0
         visible: root.hasData
 
         // ======== HERO: giant AQI number ========
@@ -116,7 +114,6 @@ Item {
             required property var modelData
             required property int index
             Layout.fillWidth: true
-            spacing: 0
 
             // Divider (top, except first)
             Rectangle {

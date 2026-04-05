@@ -165,7 +165,7 @@ Item {
       }
       return ""
     }
-    return pluginApi?.tr("location.custom") ?? ""
+    return pluginApi?.tr("location.custom")
   }
 
   // Get pollutant-specific color (simplified scale)
@@ -196,7 +196,7 @@ Item {
     if (useNoctaliaLocation) {
       // Try to get lat/lon from Noctalia's weather data
       if (!Settings.data.location?.weatherEnabled) {
-        root.errorMessage = pluginApi?.tr("errors.weatherDisabled") ?? ""
+        root.errorMessage = pluginApi?.tr("errors.weatherDisabled")
         Logger.w("Air Quality", "Weather/location not enabled in Noctalia settings")
         return
       }
@@ -205,7 +205,7 @@ Item {
         lat = weather.latitude
         lon = weather.longitude
       } else {
-        root.errorMessage = pluginApi?.tr("errors.locationUnavailable") ?? ""
+        root.errorMessage = pluginApi?.tr("errors.locationUnavailable")
         Logger.w("Air Quality", "Noctalia location not available yet")
         return
       }
