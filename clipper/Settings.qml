@@ -448,7 +448,7 @@ ColumnLayout {
             pluginApi.mainInstance.pinnedItems = [];
             pluginApi.mainInstance.savePinnedFile();
             pluginApi.mainInstance.pinnedRevision++;
-            ToastService.showNoticepluginApi?.tr("toast.pinned-cleared");
+            ToastService.showNotice(pluginApi?.tr("toast.pinned-cleared"));
           }
         }
       }

@@ -1219,14 +1219,14 @@ Item {
                         onPinClicked: {
                             if (isPinned) {
                                 root.pluginApi?.mainInstance?.unpinItem(clipboardId);
-                                ToastService.showNoticepluginApi?.tr("toast.item-unpinned");
+                                ToastService.showNotice(pluginApi?.tr("toast.item-unpinned"));
                             } else {
                                 const pinnedItems = root.pluginApi?.mainInstance?.pinnedItems || [];
                                 if (pinnedItems.length >= 20) {
                                     ToastService.showWarning(pluginApi?.tr("toast.max-pinned-items").replace("{max}", "20"));
                                 } else {
                                     root.pluginApi?.mainInstance?.pinItem(clipboardId);
-                                    ToastService.showNoticepluginApi?.tr("toast.item-pinned");
+                                    ToastService.showNotice(pluginApi?.tr("toast.item-pinned"));
                                 }
                             }
                         }
@@ -1338,7 +1338,7 @@ Item {
 
                         onPinClicked: {
                             root.pluginApi?.mainInstance?.unpinItem(modelData.id);
-                            ToastService.showNoticepluginApi?.tr("toast.item-unpinned");
+                            ToastService.showNotice(pluginApi?.tr("toast.item-unpinned"));
                         }
 
                         onDeleteClicked: {

@@ -253,7 +253,7 @@ Item {
   function pinItem(cliphistId) {
     // Validate cliphistId is numeric only (prevents command injection)
     if (!cliphistId || !/^\d+$/.test(String(cliphistId))) {
-      ToastService.showErrorpluginApi?.tr("toast.invalid-clipboard-item");
+      ToastService.showError(pluginApi?.tr("toast.invalid-clipboard-item"));
       return;
     }
 
@@ -265,7 +265,7 @@ Item {
     // Find item in current items list to get preview
     const item = root.items.find(i => i.id === cliphistId);
     if (!item) {
-      ToastService.showErrorpluginApi?.tr("toast.item-not-found");
+      ToastService.showError(pluginApi?.tr("toast.item-not-found"));
       return;
     }
 
@@ -304,7 +304,7 @@ Item {
 
     onExited: exitCode => {
                 if (exitCode !== 0) {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-pin");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-pin"));
                   return;
                 }
 
@@ -312,14 +312,14 @@ Item {
                   // For images, stdout.text contains base64-encoded data
                   const base64 = String(stdout.text).trim();
                   if (!base64 || base64.length === 0) {
-                    ToastService.showErrorpluginApi?.tr("toast.failed-to-pin-image");
+                    ToastService.showError(pluginApi?.tr("toast.failed-to-pin-image"));
                     return;
                   }
 
                   // Validate image size (approximate: base64 is ~33% larger)
                   const estimatedSize = (base64.length * 3) / 4;
                   if (estimatedSize > root.maxImageSize) {
-                    ToastService.showWarningpluginApi?.tr("toast.image-too-large");
+                    ToastService.showWarning(pluginApi?.tr("toast.image-too-large"));
                     return;
                   }
 
@@ -329,7 +329,7 @@ Item {
                   // For text, validate size (max 1MB)
                   const textContent = String(stdout.text);
                   if (textContent.length > root.maxTextSize) {
-                    ToastService.showWarningpluginApi?.tr("toast.text-too-large");
+                    ToastService.showWarning(pluginApi?.tr("toast.text-too-large"));
                     return;
                   }
 
@@ -346,7 +346,7 @@ Item {
                 Quickshell.execDetached(["cliphist", "delete", String(cliphistId)]);
 
                 root.pinnedRevision++;
-                ToastService.showNoticepluginApi?.tr("toast.item-pinned");
+                ToastService.showNotice(pluginApi?.tr("toast.item-pinned"));
               }
   }
 
@@ -371,7 +371,7 @@ Item {
     root.pinnedItems = root.pinnedItems.filter(item => item.id !== pinnedId);
     root.savePinnedFile();
     root.pinnedRevision++;
-    ToastService.showNoticepluginApi?.tr("toast.item-unpinned");
+    ToastService.showNotice(pluginApi?.tr("toast.item-unpinned"));
   }
 
   // ==================== SCRATCHPAD FUNCTIONS ====================
@@ -424,7 +424,7 @@ Item {
     // Save to file
     saveNoteCard(newNote);
 
-    ToastService.showNoticepluginApi?.tr("toast.note-created");
+    ToastService.showNotice(pluginApi?.tr("toast.note-created"));
     return noteId;
   }
 
@@ -487,7 +487,7 @@ Item {
     root.noteCards = root.noteCards.filter(n => n.id !== noteId);
     root.noteCardsRevision++;
 
-    ToastService.showNoticepluginApi?.tr("toast.note-deleted");
+    ToastService.showNotice(pluginApi?.tr("toast.note-deleted"));
   }
 
   // Function to clear all note cards and delete files from disk
@@ -514,14 +514,14 @@ Item {
     root.noteCards = [];
     root.noteCardsRevision++;
 
-    ToastService.showNoticepluginApi?.tr("toast.notes-cleared");
+    ToastService.showNotice(pluginApi?.tr("toast.notes-cleared"));
   }
 
   // Function to export scratchpad note to .txt file
   function exportNoteCard(noteId) {
     const note = root.noteCards.find(n => n.id === noteId);
     if (!note) {
-      ToastService.showErrorpluginApi?.tr("toast.note-not-found");
+      ToastService.showError(pluginApi?.tr("toast.note-not-found"));
       return;
     }
 
@@ -618,9 +618,9 @@ Item {
 
     onExited: exitCode => {
                 if (exitCode === 0) {
-                  ToastService.showNoticepluginApi?.tr("toast.copied-to-clipboard");
+                  ToastService.showNotice(pluginApi?.tr("toast.copied-to-clipboard"));
                 } else {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-copy-image");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-copy-image"));
                 }
                 stdinEnabled = true;  // Re-enable for next use
               }
@@ -635,9 +635,9 @@ Item {
 
     onExited: exitCode => {
                 if (exitCode === 0) {
-                  ToastService.showNoticepluginApi?.tr("toast.copied-to-clipboard");
+                  ToastService.showNotice(pluginApi?.tr("toast.copied-to-clipboard"));
                 } else {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-copy-text");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-copy-text"));
                 }
                 stdinEnabled = true;  // Re-enable for next use
               }
@@ -655,7 +655,7 @@ Item {
       // Extract base64 from data URL: data:image/png;base64,iVBORw0K...
       const matches = item.content.match(/^data:([^;]+);base64,(.+)$/);
       if (!matches) {
-        ToastService.showErrorpluginApi?.tr("toast.failed-to-copy-image");
+        ToastService.showError(pluginApi?.tr("toast.failed-to-copy-image"));
         return;
       }
 
@@ -756,10 +756,10 @@ Item {
                   if (selectedText && selectedText.length > 0) {
                     root.addTodoWithText(selectedText, root.pendingPageId);
                   } else {
-                    ToastService.showErrorpluginApi?.tr("toast.no-text-selected");
+                    ToastService.showError(pluginApi?.tr("toast.no-text-selected"));
                   }
                 } else {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-get-selection");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-get-selection"));
                 }
               }
   }
@@ -767,13 +767,13 @@ Item {
   // Add todo with text to specified page via direct PluginService API
   function addTodoWithText(text, pageId) {
     if (!text || text.length === 0) {
-      ToastService.showErrorpluginApi?.tr("toast.no-text-to-add");
+      ToastService.showError(pluginApi?.tr("toast.no-text-to-add"));
       return;
     }
 
     const todoApi = PluginService.getPluginAPI("todo");
     if (!todoApi) {
-      ToastService.showErrorpluginApi?.tr("toast.todo-not-available");
+      ToastService.showError(pluginApi?.tr("toast.todo-not-available"));
       return;
     }
 
@@ -798,7 +798,7 @@ Item {
     todoApi.pluginSettings.count = todos.length;
     todoApi.saveSettings();
 
-    ToastService.showNoticepluginApi?.tr("toast.added-to-todo");
+    ToastService.showNotice(pluginApi?.tr("toast.added-to-todo"));
 
     // Also copy to clipboard
     Quickshell.execDetached(["wl-copy", "--", text]);
@@ -812,7 +812,7 @@ Item {
 
     onExited: exitCode => {
                 if (exitCode !== 0) {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-copy");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-copy"));
                 }
               }
   }
@@ -830,7 +830,7 @@ Item {
   function copyToClipboard(id) {
     // Validate id is numeric only (prevents command injection)
     if (!id || !/^\d+$/.test(String(id))) {
-      ToastService.showErrorpluginApi?.tr("toast.invalid-clipboard-item");
+      ToastService.showError(pluginApi?.tr("toast.invalid-clipboard-item"));
       return;
     }
 
@@ -844,7 +844,7 @@ Item {
   function deleteById(id) {
     // Validate id is numeric only (prevents command injection)
     if (!id || !/^\d+$/.test(String(id))) {
-      ToastService.showErrorpluginApi?.tr("toast.invalid-clipboard-item");
+      ToastService.showError(pluginApi?.tr("toast.invalid-clipboard-item"));
       return;
     }
 
@@ -884,7 +884,7 @@ Item {
   // Add selected text to specific page
   function addSelectedToPage(pageId) {
     if (!pluginApi?.pluginSettings?.enableTodoIntegration) {
-      ToastService.showErrorpluginApi?.tr("toast.todo-disabled");
+      ToastService.showError(pluginApi?.tr("toast.todo-disabled"));
       return;
     }
 
@@ -941,7 +941,7 @@ Item {
     // Usage: qs -c noctalia-shell ipc call plugin:clipper addSelectionToTodo
     function addSelectionToTodo() {
       if (!pluginApi?.pluginSettings?.enableTodoIntegration) {
-        ToastService.showErrorpluginApi?.tr("toast.todo-disabled");
+        ToastService.showError(pluginApi?.tr("toast.todo-disabled"));
         return;
       }
       // Get selected text first, then show selector
@@ -981,10 +981,10 @@ Item {
                   if (selectedText && selectedText.length > 0) {
                     root.showTodoPageSelector(selectedText);
                   } else {
-                    ToastService.showErrorpluginApi?.tr("toast.no-text-selected");
+                    ToastService.showError(pluginApi?.tr("toast.no-text-selected"));
                   }
                 } else {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-get-selection");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-get-selection"));
                 }
               }
   }
@@ -1018,7 +1018,7 @@ Item {
     if (todoPageSelector) {
       todoPageSelector.show(text, todoPages);
     } else {
-      ToastService.showErrorpluginApi?.tr("toast.could-not-open-todo");
+      ToastService.showError(pluginApi?.tr("toast.could-not-open-todo"));
     }
   }
 
@@ -1044,7 +1044,7 @@ Item {
                    if (noteCardSelector) {
                      noteCardSelector.show(text, root.noteCards);
                    } else {
-                     ToastService.showErrorpluginApi?.tr("toast.could-not-open-note-selector");
+                     ToastService.showError(pluginApi?.tr("toast.could-not-open-note-selector"));
                    }
                  });
   }
@@ -1064,7 +1064,7 @@ Item {
       const todoApi = PluginService.getPluginAPI("todo");
       if (todoApi && todoApi.mainInstance) {
         todoApi.mainInstance.addTextToNewPage(root.pendingSelectedText);
-        ToastService.showNoticepluginApi?.tr("toast.todo-page-created");
+        ToastService.showNotice(pluginApi?.tr("toast.todo-page-created"));
       }
       root.pendingSelectedText = "";
     }
@@ -1091,11 +1091,11 @@ Item {
         noteCardsChanged();
         saveNoteCard(noteCards[i]);
 
-        ToastService.showNoticepluginApi?.tr("toast.text-added-to-note");
+        ToastService.showNotice(pluginApi?.tr("toast.text-added-to-note"));
         return;
       }
     }
-    ToastService.showErrorpluginApi?.tr("toast.note-not-found");
+    ToastService.showError(pluginApi?.tr("toast.note-not-found"));
   }
 
   // ToDo page selector (single instance, uses first screen)
@@ -1173,10 +1173,10 @@ Item {
                   if (selectedText && selectedText.length > 0) {
                     root.showNoteCardSelector(selectedText);
                   } else {
-                    ToastService.showErrorpluginApi?.tr("toast.no-text-selected");
+                    ToastService.showError(pluginApi?.tr("toast.no-text-selected"));
                   }
                 } else {
-                  ToastService.showErrorpluginApi?.tr("toast.failed-to-get-selection");
+                  ToastService.showError(pluginApi?.tr("toast.failed-to-get-selection"));
                 }
               }
   }
