@@ -20,7 +20,6 @@ DraggableDesktopWidget {
 
     // --- Date Logic ---
     property date currentDate: new Date()
-    // We use these as "Primitive Anchors"
     property int liveDay: new Date().getDate()
     property int liveMonth: new Date().getMonth()
     property int liveYear: new Date().getFullYear()
@@ -28,7 +27,6 @@ DraggableDesktopWidget {
     function refreshDate() {
         let now = new Date();
         currentDate = now;
-        // Updating these primitives is the "hammer" that forces QML to redraw
         liveDay = now.getDate();
         liveMonth = now.getMonth();
         liveYear = now.getFullYear();
@@ -61,55 +59,57 @@ DraggableDesktopWidget {
     // --- UI Layout ---
     Rectangle {
         anchors.fill: parent
-        color: Color.mSurface
+        color: Color.mSurface || "#1e1e1e"
         opacity: 0.85
-        radius: Style.radiusM
-        border.color: Color.mOutlineVariant
+        radius: Style.radiusM || 8
+        border.color: Color.mOutlineVariant || "#333333"
         border.width: 1
 
         ColumnLayout {
             anchors.fill: parent
-            anchors.margins: Style.marginL
-            spacing: Style.marginS
+            anchors.margins: Style.marginL || 15
+            spacing: Style.marginS || 5
 
             NText {
                 text: currentDate.toLocaleDateString(Qt.locale(), "MMMM yyyy").toUpperCase()
-                color: Color.mPrimary
+                color: Color.mPrimary || "#21A3D5"
                 font.bold: true
                 font.letterSpacing: 1.2
-                font.pointSize: Style.fontSizeM
+                font.pointSize: Style.fontSizeM || 11
                 Layout.alignment: Qt.AlignHCenter
-                Layout.bottomMargin: Style.marginS
+                Layout.bottomMargin: Style.marginS || 5
             }
 
             GridLayout {
                 columns: 7
-                rowSpacing: Style.marginS
-                columnSpacing: Style.marginS
+                rowSpacing: Style.marginS || 5
+                columnSpacing: Style.marginS || 5
                 Layout.fillWidth: true
 
+                // Days Header (M T W...)
                 Repeater {
                     model: root.days
                     NText {
                         text: modelData
-                        color: Color.mOnSurfaceVariant
+                        color: Color.mOnSurfaceVariant || "#888888"
                         font.bold: true
-                        font.pointSize: Style.fontSizeS
+                        font.pointSize: Style.fontSizeS || 9
                         Layout.fillWidth: true
                         horizontalAlignment: Text.AlignHCenter
                     }
                 }
 
+                // Padding for start of month
                 Repeater {
                     model: root.firstDayOffset
                     Item { Layout.preferredWidth: 20 * widgetScale; Layout.preferredHeight: 20 * widgetScale }
                 }
 
+                // Calendar Days
                 Repeater {
                     model: root.daysInMonth
                     Rectangle {
                         readonly property int dayNum: index + 1
-
                         readonly property bool isActuallyToday:
                         dayNum === root.liveDay &&
                         root.currentDate.getMonth() === root.liveMonth &&
@@ -118,15 +118,16 @@ DraggableDesktopWidget {
                         Layout.preferredWidth: 28 * widgetScale
                         Layout.preferredHeight: 28 * widgetScale
 
-                        color: isActuallyToday ? Color.mPrimary : "transparent"
-                        radius: Style.radiusS
+                        // Use safe color fallbacks
+                        color: isActuallyToday ? (Color.mPrimary || "#21A3D5") : "transparent"
+                        radius: Style.radiusS || 4
 
                         NText {
                             anchors.centerIn: parent
                             text: dayNum
-                            color: isActuallyToday ? Color.mOnPrimary : Color.mOnSurface
+                            color: isActuallyToday ? (Color.mOnPrimary || "#ffffff") : (Color.mOnSurface || "#eeeeee")
                             font.bold: isActuallyToday
-                            font.pointSize: Style.fontSizeS
+                            font.pointSize: Style.fontSizeS || 9
                         }
                     }
                 }
