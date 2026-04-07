@@ -883,6 +883,23 @@
       "lastUpdated": "2026-02-05T11:41:54-08:00"
     },
     {
+      "id": "noctalia-calculator",
+      "name": "Calculator",
+      "version": "1.0.0",
+      "official": false,
+      "author": "pir0c0pter0",
+      "description": "Theme-aware calculator plugin for Noctalia on Niri with bar widget, floating panel and keyboard support",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "4.4.0",
+      "license": "MIT",
+      "tags": [
+        "Bar",
+        "Panel",
+        "Utility"
+      ],
+      "lastUpdated": "2026-03-23T15:27:58-03:00"
+    },
+    {
       "id": "noctalia-supergfxctl",
       "name": "SuperGFX Control",
       "version": "0.0.3",
