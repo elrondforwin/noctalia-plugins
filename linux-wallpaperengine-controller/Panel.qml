@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Controls
 import QtQuick.Layouts
 import QtMultimedia
 import Quickshell
@@ -47,6 +48,7 @@ Item {
   readonly property bool singleScreenMode: Quickshell.screens.length <= 1
   property bool applyAllDisplays: !singleScreenMode && root._applyAllDisplays
   property bool _applyAllDisplays: false
+  property bool applyTargetExpanded: false
   property bool filterDropdownOpen: false
   property bool sortDropdownOpen: false
   property bool errorDetailsExpanded: false
@@ -417,9 +419,7 @@ Item {
 
         Rectangle {
           Layout.fillWidth: true
-          Layout.preferredHeight: (root.applyAllDisplays || root.singleScreenMode)
-            ? (56 * Style.uiScaleRatio + 56 * Style.uiScaleRatio + Style.marginS * 4)
-            : (56 * Style.uiScaleRatio + 52 * Style.uiScaleRatio + 56 * Style.uiScaleRatio + Style.marginS * 5)
+          Layout.preferredHeight: 56 * Style.uiScaleRatio + 48 * Style.uiScaleRatio + Style.marginS * 4
           Layout.minimumHeight: Layout.preferredHeight
           radius: Style.radiusL
           color: Color.mSurface
@@ -471,15 +471,6 @@ Item {
               }
 
               NIconButton {
-                enabled: (mainInstance?.engineAvailable ?? false) && !root.singleScreenMode
-                icon: "device-desktop"
-                tooltipText: root.applyAllDisplays
-                  ? pluginApi?.tr("panel.switchToPerDisplay")
-                  : pluginApi?.tr("panel.switchToAllDisplays")
-                onClicked: root._applyAllDisplays = !root._applyAllDisplays
-              }
-
-              NIconButton {
                 icon: "settings"
                 tooltipText: pluginApi?.tr("menu.settings")
                 onClicked: {
@@ -499,25 +490,6 @@ Item {
                   if (pluginApi) {
                     pluginApi.togglePanel(screen);
                   }
-                }
-              }
-            }
-
-            RowLayout {
-              Layout.fillWidth: true
-              Layout.preferredHeight: 52 * Style.uiScaleRatio
-              visible: !root.applyAllDisplays && !root.singleScreenMode
-
-              Repeater {
-                model: root.screenModel
-
-                NButton {
-                  required property var modelData
-                  Layout.fillWidth: true
-                  enabled: mainInstance?.engineAvailable ?? false
-                  icon: root.selectedScreenName === modelData.key ? "check" : "device-desktop"
-                  text: modelData.name
-                  onClicked: root.selectedScreenName = modelData.key
                 }
               }
             }
@@ -1063,26 +1035,88 @@ Item {
                        }
                      }
 
-                     NButton {
+                     ColumnLayout {
                        Layout.fillWidth: true
-                       text: pluginApi?.tr("panel.confirmApply")
-                       icon: "check"
-                       enabled: (mainInstance?.engineAvailable ?? false) && root.pendingPath.length > 0
-                       onClicked: root.applyPendingSelection()
-                     }
+                       spacing: Style.marginS
 
-                     NButton {
-                       Layout.fillWidth: true
-                       text: pluginApi?.tr("panel.resetWallpaperSettings")
-                       icon: "refresh"
-                       onClicked: root.resetPendingToGlobalDefaults()
+                      RowLayout {
+                        Layout.fillWidth: true
+                        spacing: Style.marginS
+
+                         NButton {
+                           Layout.fillWidth: true
+                           text: pluginApi?.tr("panel.confirmApply")
+                           icon: "check"
+                           enabled: (mainInstance?.engineAvailable ?? false) && root.pendingPath.length > 0
+                           onClicked: root.applyPendingSelection()
+                         }
+
+                         NIconButton {
+                           Layout.preferredWidth: 42 * Style.uiScaleRatio
+                           Layout.preferredHeight: 42 * Style.uiScaleRatio
+                           visible: !root.singleScreenMode
+                           enabled: mainInstance?.engineAvailable ?? false
+                            icon: "device-desktop"
+                           tooltipText: root.applyAllDisplays
+                             ? pluginApi?.tr("panel.targetAllDisplays")
+                             : pluginApi?.tr("panel.targetSingleDisplay", { screen: root.selectedScreenName })
+                           onClicked: root.applyTargetExpanded = !root.applyTargetExpanded
+                         }
+                       }
+
+                       NBox {
+                         Layout.fillWidth: true
+                         visible: !root.singleScreenMode && root.applyTargetExpanded
+                         Layout.preferredHeight: targetScreenColumn.implicitHeight + Style.marginL * 2
+
+                         ButtonGroup {
+                           id: targetScreenGroup
+                         }
+
+                         ColumnLayout {
+                           id: targetScreenColumn
+                           anchors.fill: parent
+                           anchors.margins: Style.marginL
+                           spacing: Style.marginS
+
+                           NRadioButton {
+                             ButtonGroup.group: targetScreenGroup
+                             Layout.fillWidth: true
+                             enabled: mainInstance?.engineAvailable ?? false
+                             text: pluginApi?.tr("panel.applyAllDisplays")
+                             checked: root.applyAllDisplays
+                             onClicked: {
+                               root._applyAllDisplays = true;
+                               root.applyTargetExpanded = false;
+                             }
+                           }
+
+                           Repeater {
+                             model: root.screenModel
+
+                             NRadioButton {
+                               ButtonGroup.group: targetScreenGroup
+                               required property var modelData
+                               Layout.fillWidth: true
+                               enabled: mainInstance?.engineAvailable ?? false
+                                text: pluginApi?.tr("panel.applySingleDisplay", { screen: modelData.name })
+                               checked: !root.applyAllDisplays && root.selectedScreenName === modelData.key
+                               onClicked: {
+                                 root._applyAllDisplays = false;
+                                 root.selectedScreenName = modelData.key;
+                                 root.applyTargetExpanded = false;
+                               }
+                             }
+                           }
+                         }
+                       }
                      }
 
                      NDivider {
                        Layout.fillWidth: true
                        Layout.topMargin: Style.marginM
-                      Layout.bottomMargin: Style.marginM
-                    }
+                       Layout.bottomMargin: Style.marginM
+                     }
 
                     NText {
                       text: pluginApi?.tr("panel.sectionAudio")
