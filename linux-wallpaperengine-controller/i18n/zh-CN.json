@@ -30,7 +30,6 @@
   },
   "panel": {
     "title": "Linux-WallpaperEngine",
-    "sectionInfo": "信息",
     "sectionAudio": "音频与显示",
     "sectionFeatures": "功能",
     "installHint": "安装示例：yay -S linux-wallpaperengine-git",
@@ -38,28 +37,17 @@
     "errorShowDetails": "查看详情",
     "errorHideDetails": "收起详情",
     "errorDismiss": "关闭提示",
-    "screen": {
-      "label": "目标屏幕",
-      "description": "选择要应用当前壁纸的显示器"
-    },
     "reload": "重载",
     "stop": "停止",
     "folderInvalid": "壁纸源目录无效或不可访问。",
     "scanning": "正在扫描壁纸...",
     "searchPlaceholder": "搜索壁纸...",
     "searchClear": "清空搜索",
-    "filterButton": "筛选",
     "filterButtonSummary": "筛选 · {type}",
-    "sortButton": "排序",
     "sortButtonSummary": "排序 · {direction}{sort}",
     "applyAllDisplays": "应用到全部显示器",
-    "perDisplayMode": "多显示器",
-    "switchToAllDisplays": "应用在全部显示器上",
-    "switchToPerDisplay": "多显示器分别应用",
     "closePanel": "关闭面板",
     "confirmApply": "应用壁纸",
-    "cancelSelection": "取消",
-    "pendingHint": "已选中但未应用，可先调整设置后再确认。",
     "wallpaperScaling": "缩放",
     "wallpaperVolume": "音量",
     "wallpaperMuted": "静音",
@@ -100,8 +88,8 @@
     "typeApplication": "应用",
     "resolutionUnknown": "未知",
     "dynamicBadge": "动态",
+    "staticBadge": "静态",
     "count": "壁纸数量：{count}",
-    "apply": "应用",
     "empty": "源目录中未找到任何文件夹"
   },
   "settings": {
@@ -110,6 +98,10 @@
       "compatibilityTitle": "兼容性",
       "audioTitle": "音频",
       "displayTitle": "显示"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
     },
     "wallpapersFolder": {
       "label": "壁纸源目录",

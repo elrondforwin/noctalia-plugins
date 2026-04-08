@@ -832,8 +832,9 @@ Item {
                       }
 
                       NText {
-                        visible: modelData.dynamic
-                        text: pluginApi?.tr("panel.dynamicBadge")
+                        text: modelData.dynamic
+                          ? pluginApi?.tr("panel.dynamicBadge")
+                          : pluginApi?.tr("panel.staticBadge")
                         color: Color.mPrimary
                         font.pointSize: Style.fontSizeS
                       }
@@ -1143,7 +1144,7 @@ Item {
                       label: pluginApi?.tr("panel.wallpaperVolume")
                       from: 0
                       to: 100
-                      suffix: " %"
+                      suffix: pluginApi?.tr("settings.units.percent")
                       value: root.selectedVolume
                       enabled: !root.selectedMuted
                       onValueChanged: root.selectedVolume = value
@@ -1256,7 +1257,7 @@ Item {
 
       delegate: Rectangle {
         required property var modelData
-        width: filterList.width
+        width: filterList.availableWidth
         height: 34 * Style.uiScaleRatio
         radius: Style.radiusM
         color: modelData.selected ? Qt.alpha(Color.mPrimary, 0.22) : "transparent"
@@ -1315,7 +1316,7 @@ Item {
 
       delegate: Rectangle {
         required property var modelData
-        width: sortList.width
+        width: sortList.availableWidth
         height: 34 * Style.uiScaleRatio
         radius: Style.radiusM
         color: modelData.selected ? Qt.alpha(Color.mPrimary, 0.22) : "transparent"

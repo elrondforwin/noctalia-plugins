@@ -30,7 +30,6 @@
   },
   "panel": {
     "title": "Linux-WallpaperEngine",
-    "sectionInfo": "情報",
     "sectionAudio": "オーディオとディスプレイ",
     "sectionFeatures": "機能",
     "installHint": "インストール例: yay -S linux-wallpaperengine-git",
@@ -38,28 +37,17 @@
     "errorShowDetails": "詳細を表示",
     "errorHideDetails": "詳細を隠す",
     "errorDismiss": "閉じる",
-    "screen": {
-      "label": "対象スクリーン",
-      "description": "現在の壁紙を適用するモニターを選択"
-    },
     "reload": "再読み込み",
     "stop": "停止",
     "folderInvalid": "壁紙ソースディレクトリが無効、またはアクセスできません。",
     "scanning": "壁紙をスキャン中...",
     "searchPlaceholder": "壁紙を検索...",
     "searchClear": "検索をクリア",
-    "filterButton": "フィルター",
     "filterButtonSummary": "フィルター · {type}",
-    "sortButton": "並び替え",
     "sortButtonSummary": "並び替え · {direction}{sort}",
     "applyAllDisplays": "すべてのディスプレイに適用",
-    "perDisplayMode": "マルチディスプレイ",
-    "switchToAllDisplays": "すべてのディスプレイに適用",
-    "switchToPerDisplay": "ディスプレイごとに適用",
     "closePanel": "パネルを閉じる",
     "confirmApply": "壁紙を適用",
-    "cancelSelection": "キャンセル",
-    "pendingHint": "選択済みですが未適用です。設定を調整してから確定できます。",
     "wallpaperScaling": "拡大縮小",
     "wallpaperVolume": "音量",
     "wallpaperMuted": "ミュート",
@@ -100,8 +88,8 @@
     "typeApplication": "アプリケーション",
     "resolutionUnknown": "不明",
     "dynamicBadge": "動的",
+    "staticBadge": "静的",
     "count": "壁紙数: {count}",
-    "apply": "適用",
     "empty": "ソースディレクトリにフォルダーが見つかりません"
   },
   "settings": {
@@ -111,7 +99,11 @@
       "audioTitle": "音声",
       "displayTitle": "表示"
     },
-"wallpapersFolder": {
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
+    },
+    "wallpapersFolder": {
       "label": "壁紙ソースディレクトリ",
       "description": "壁紙プロジェクトフォルダーを含むディレクトリ",
       "placeholder": "~/.local/share/Steam/steamapps/workshop/content/431960",

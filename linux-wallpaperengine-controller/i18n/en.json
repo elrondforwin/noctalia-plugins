@@ -30,7 +30,6 @@
   },
   "panel": {
     "title": "Linux-WallpaperEngine",
-    "sectionInfo": "Information",
     "sectionAudio": "Audio & Display",
     "sectionFeatures": "Features",
     "installHint": "Install example: yay -S linux-wallpaperengine-git",
@@ -38,28 +37,17 @@
     "errorShowDetails": "View details",
     "errorHideDetails": "Hide details",
     "errorDismiss": "Dismiss",
-    "screen": {
-      "label": "Target screen",
-      "description": "Select the monitor to apply the current wallpaper"
-    },
     "reload": "Reload",
     "stop": "Stop",
     "folderInvalid": "Wallpaper source directory is invalid or inaccessible.",
     "scanning": "Scanning wallpapers...",
     "searchPlaceholder": "Search wallpapers...",
     "searchClear": "Clear search",
-    "filterButton": "Filter",
     "filterButtonSummary": "Filter · {type}",
-    "sortButton": "Sort",
     "sortButtonSummary": "Sort · {direction} {sort}",
     "applyAllDisplays": "Apply to all displays",
-    "perDisplayMode": "Multi-display",
-    "switchToAllDisplays": "Apply on all displays",
-    "switchToPerDisplay": "Apply separately per display",
     "closePanel": "Close panel",
     "confirmApply": "Apply wallpaper",
-    "cancelSelection": "Cancel",
-    "pendingHint": "Selected but not applied yet. You can adjust settings before confirming.",
     "wallpaperScaling": "Scaling",
     "wallpaperVolume": "Volume",
     "wallpaperMuted": "Mute",
@@ -100,8 +88,8 @@
     "typeApplication": "Application",
     "resolutionUnknown": "Unknown",
     "dynamicBadge": "Dynamic",
+    "staticBadge": "Static",
     "count": "Wallpaper count: {count}",
-    "apply": "Apply",
     "empty": "No folders found in source directory"
   },
   "settings": {
@@ -110,6 +98,10 @@
       "compatibilityTitle": "Compatibility",
       "audioTitle": "Audio",
       "displayTitle": "Display"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
     },
     "wallpapersFolder": {
       "label": "Wallpaper source directory",

@@ -30,7 +30,6 @@
   },
   "panel": {
     "title": "Linux-WallpaperEngine",
-    "sectionInfo": "Информация",
     "sectionAudio": "Аудио и отображение",
     "sectionFeatures": "Функции",
     "installHint": "Пример установки: yay -S linux-wallpaperengine-git",
@@ -38,28 +37,17 @@
     "errorShowDetails": "Показать подробности",
     "errorHideDetails": "Скрыть подробности",
     "errorDismiss": "Закрыть",
-    "screen": {
-      "label": "Целевой экран",
-      "description": "Выберите монитор, на который нужно применить текущие обои"
-    },
     "reload": "Перезагрузить",
     "stop": "Остановить",
     "folderInvalid": "Каталог источника обоев недействителен или недоступен.",
     "scanning": "Сканирование обоев...",
     "searchPlaceholder": "Поиск обоев...",
     "searchClear": "Очистить поиск",
-    "filterButton": "Фильтр",
     "filterButtonSummary": "Фильтр · {type}",
-    "sortButton": "Сортировка",
     "sortButtonSummary": "Сортировка · {direction} {sort}",
     "applyAllDisplays": "Применить ко всем дисплеям",
-    "perDisplayMode": "Несколько дисплеев",
-    "switchToAllDisplays": "Применить на всех дисплеях",
-    "switchToPerDisplay": "Применять отдельно для каждого дисплея",
     "closePanel": "Закрыть панель",
     "confirmApply": "Применить обои",
-    "cancelSelection": "Отмена",
-    "pendingHint": "Обои выбраны, но еще не применены. Вы можете изменить настройки перед подтверждением.",
     "wallpaperScaling": "Масштабирование",
     "wallpaperVolume": "Громкость",
     "wallpaperMuted": "Без звука",
@@ -100,8 +88,8 @@
     "typeApplication": "Приложение",
     "resolutionUnknown": "Неизвестно",
     "dynamicBadge": "Динамические",
+    "staticBadge": "Статические",
     "count": "Количество обоев: {count}",
-    "apply": "Применить",
     "empty": "В исходном каталоге не найдено ни одной папки"
   },
   "settings": {
@@ -110,6 +98,10 @@
       "compatibilityTitle": "Совместимость",
       "audioTitle": "Аудио",
       "displayTitle": "Отображение"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
     },
     "wallpapersFolder": {
       "label": "Каталог источника обоев",

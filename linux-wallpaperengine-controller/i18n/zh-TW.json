@@ -30,7 +30,6 @@
   },
   "panel": {
     "title": "Linux-WallpaperEngine",
-    "sectionInfo": "資訊",
     "sectionAudio": "音訊與顯示",
     "sectionFeatures": "功能",
     "installHint": "安裝範例：yay -S linux-wallpaperengine-git",
@@ -38,28 +37,17 @@
     "errorShowDetails": "查看詳情",
     "errorHideDetails": "收起詳情",
     "errorDismiss": "關閉提示",
-    "screen": {
-      "label": "目標螢幕",
-      "description": "選擇要套用目前壁紙的顯示器"
-    },
     "reload": "重載",
     "stop": "停止",
     "folderInvalid": "壁紙來源目錄無效或不可存取。",
     "scanning": "正在掃描壁紙...",
     "searchPlaceholder": "搜尋壁紙...",
     "searchClear": "清除搜尋",
-    "filterButton": "篩選",
     "filterButtonSummary": "篩選 · {type}",
-    "sortButton": "排序",
     "sortButtonSummary": "排序 · {direction}{sort}",
     "applyAllDisplays": "套用到全部顯示器",
-    "perDisplayMode": "多顯示器",
-    "switchToAllDisplays": "套用在全部顯示器上",
-    "switchToPerDisplay": "多顯示器分別套用",
     "closePanel": "關閉面板",
     "confirmApply": "套用壁紙",
-    "cancelSelection": "取消",
-    "pendingHint": "已選取但尚未套用，可先調整設定後再確認。",
     "wallpaperScaling": "縮放",
     "wallpaperVolume": "音量",
     "wallpaperMuted": "靜音",
@@ -100,8 +88,8 @@
     "typeApplication": "應用",
     "resolutionUnknown": "未知",
     "dynamicBadge": "動態",
+    "staticBadge": "靜態",
     "count": "壁紙數量：{count}",
-    "apply": "套用",
     "empty": "來源目錄中找不到任何資料夾"
   },
   "settings": {
@@ -110,6 +98,10 @@
       "compatibilityTitle": "相容性",
       "audioTitle": "音訊",
       "displayTitle": "顯示"
+    },
+    "units": {
+      "fps": " FPS",
+      "percent": " %"
     },
     "wallpapersFolder": {
       "label": "壁紙來源目錄",
