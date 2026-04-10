@@ -197,18 +197,10 @@ Item {
     const screenConfigs = cfg.screens || ({});
     const raw = screenConfigs[screenName] || ({});
 
-    const resolvedVolume = Number(raw.volume ?? defaultVolume);
-
     return {
       path: raw.path ?? "",
       scaling: raw.scaling ?? defaultScaling,
-      clamp: raw.clamp ?? defaultClamp,
-      volume: isNaN(resolvedVolume) ? defaultVolume : Math.max(0, Math.min(100, Math.floor(resolvedVolume))),
-      muted: raw.muted ?? defaultMuted,
-      audioReactiveEffects: raw.audioReactiveEffects ?? defaultAudioReactiveEffects,
-      noAutomute: raw.noAutomute ?? defaultNoAutomute,
-      disableMouse: raw.disableMouse ?? defaultDisableMouse,
-      disableParallax: raw.disableParallax ?? defaultDisableParallax
+      clamp: raw.clamp ?? defaultClamp
     };
   }
 
@@ -272,6 +264,26 @@ Item {
     setScreenWallpaperWithOptions(screenName, path, ({}));
   }
 
+  function clearLegacyScreenRuntimeOptions(screenName) {
+    const screenConfig = pluginApi?.pluginSettings?.screens?.[screenName];
+    if (!screenConfig) {
+      return;
+    }
+
+    delete screenConfig.volume;
+    delete screenConfig.muted;
+    delete screenConfig.audioReactiveEffects;
+    delete screenConfig.noAutomute;
+    delete screenConfig.disableMouse;
+    delete screenConfig.disableParallax;
+  }
+
+  function clearLegacyRuntimeOptionsForAllScreens() {
+    for (const screen of Quickshell.screens) {
+      clearLegacyScreenRuntimeOptions(screen.name);
+    }
+  }
+
   function setScreenWallpaperWithOptions(screenName, path, options) {
     if (!pluginApi) {
       return;
@@ -322,6 +334,8 @@ Item {
     if (options?.disableParallax !== undefined) {
       pluginApi.pluginSettings.defaultDisableParallax = !!options.disableParallax;
     }
+
+    clearLegacyScreenRuntimeOptions(screenName);
 
     if (options?.customProperties !== undefined) {
       setWallpaperProperties(path, options.customProperties);
@@ -410,6 +424,8 @@ Item {
     if (hasDisableParallax) {
       pluginApi.pluginSettings.defaultDisableParallax = !!options.disableParallax;
     }
+
+    clearLegacyRuntimeOptionsForAllScreens();
 
     pluginApi.saveSettings();
     restartEngine();
@@ -513,14 +529,6 @@ Item {
       const candidateCfg = getScreenConfig(candidate.name);
       const candidatePath = normalizedPath(candidateCfg.path);
       if (candidatePath && candidatePath.length > 0) {
-        runtimeOptions = {
-          volume: candidateCfg.volume,
-          muted: candidateCfg.muted,
-          audioReactiveEffects: candidateCfg.audioReactiveEffects,
-          noAutomute: candidateCfg.noAutomute,
-          disableMouse: candidateCfg.disableMouse,
-          disableParallax: candidateCfg.disableParallax
-        };
         runtimeClamp = String(cfg.defaultClamp ?? defaults.defaultClamp ?? "clamp").trim();
         break;
       }

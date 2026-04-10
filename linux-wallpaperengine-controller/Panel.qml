@@ -88,7 +88,7 @@ Item {
     if (!(mainInstance?.engineAvailable ?? false)) {
       return pluginApi?.tr("panel.statusUnavailable");
     }
-    if (mainInstance?.isApplying ?? false) {
+    if (mainInstance?.engineRunning ?? false) {
       return pluginApi?.tr("panel.statusRunning");
     }
     if (mainInstance?.hasAnyConfiguredWallpaper && mainInstance.hasAnyConfiguredWallpaper()) {
@@ -103,7 +103,7 @@ Item {
     if (!(mainInstance?.engineAvailable ?? false)) {
       return Color.mError;
     }
-    if (mainInstance?.isApplying ?? false) {
+    if (mainInstance?.engineRunning ?? false) {
       return Color.mPrimary;
     }
     if (mainInstance?.hasAnyConfiguredWallpaper && mainInstance.hasAnyConfiguredWallpaper()) {
@@ -540,7 +540,7 @@ Item {
         current = {
           key: headerMatch[1].trim(),
           type: headerMatch[2].toLowerCase(),
-          label: "",
+          label: undefined,
           min: undefined,
           max: undefined,
           step: undefined,

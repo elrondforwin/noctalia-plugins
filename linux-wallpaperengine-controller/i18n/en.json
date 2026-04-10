@@ -9,6 +9,7 @@
   },
   "menu": {
     "reload": "Reload wallpaper engine",
+    "start": "Start wallpaper engine",
     "stop": "Stop wallpaper engine",
     "settings": "Plugin settings"
   },

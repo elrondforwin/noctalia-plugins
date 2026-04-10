@@ -68,9 +68,9 @@ NIconButton {
         "icon": "refresh"
       },
       {
-        "label": pluginApi?.tr("menu.stop"),
-        "action": "stop",
-        "icon": "player-stop"
+        "label": mainInstance?.engineRunning ? pluginApi?.tr("menu.stop") : pluginApi?.tr("menu.start"),
+        "action": mainInstance?.engineRunning ? "stop" : "start",
+        "icon": mainInstance?.engineRunning ? "player-stop" : "player-play"
       },
       {
         "label": pluginApi?.tr("menu.settings"),
@@ -87,6 +87,8 @@ NIconButton {
         mainInstance?.reload(true);
       } else if (action === "stop") {
         mainInstance?.stopAll(true);
+      } else if (action === "start") {
+        mainInstance?.reload(true);
       } else if (action === "settings") {
         BarService.openPluginSettings(root.screen, pluginApi.manifest);
       }
