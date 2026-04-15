@@ -314,6 +314,25 @@
       "lastUpdated": "2026-03-20T22:21:12+01:00"
     },
     {
+      "id": "dmenu",
+      "name": "Dmenu Provider",
+      "version": "1.0.0",
+      "official": false,
+      "author": "Ben Hilton",
+      "description": "An IPC-driven dmenu replacement that lets external scripts present choices through a Noctalia panel.",
+      "repository": "https://github.com/noctalia-dev/noctalia-plugins",
+      "minNoctaliaVersion": "3.9.0",
+      "license": "MIT",
+      "tags": [
+        "Panel",
+        "Productivity",
+        "Developer",
+        "System",
+        "Utility"
+      ],
+      "lastUpdated": "2026-04-13T17:24:58-06:00"
+    },
+    {
       "id": "dns-switcher",
       "name": "DNS Switcher",
       "version": "1.2.1",
